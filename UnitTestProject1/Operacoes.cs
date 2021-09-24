@@ -6,13 +6,13 @@ namespace Calculadora_Teste_Unitario
     class Operacoes
     {
 
-        public decimal Subtracao(List<decimal> values)
+        public float Subtracao(List<float> values)
         {
             try
             {
                 bool first_run = true;
 
-                decimal retorno = 1;
+                float retorno = 1;
                 foreach (var val in values)
                 {
                     if (first_run)
@@ -31,13 +31,13 @@ namespace Calculadora_Teste_Unitario
             }
 
         }
-        public decimal Soma(List<decimal> values)
+        public float Soma(List<float> values)
         {
             try
             {
                 bool first_run = true;
 
-                decimal retorno = 1;
+                float retorno = 1;
                 foreach (var val in values)
                 {
                     if (first_run)
@@ -50,18 +50,18 @@ namespace Calculadora_Teste_Unitario
                 }
                 return retorno;
             }
-            catch (OverflowException )
+            catch (OverflowException)
             {
                 return 0;
             }
         }
-        public decimal Divisao(List<decimal> values)
+        public float Divisao(List<float> values)
         {
             try
             {
                 bool first_run = true;
 
-                decimal retorno = 1;
+                float retorno = 1;
                 foreach (var val in values)
                 {
                     if (first_run)
@@ -74,18 +74,18 @@ namespace Calculadora_Teste_Unitario
                 }
                 return retorno;
             }
-            catch (OverflowException )
+            catch (OverflowException)
             {
                 return 0;
             }
         }
-        public decimal Multiplicacao(List<decimal> values)
+        public float Multiplicacao(List<float> values)
         {
             try
             {
                 bool first_run = true;
 
-                decimal retorno = 1;
+                float retorno = 1;
                 foreach (var val in values)
                 {
                     if (first_run)
@@ -98,7 +98,7 @@ namespace Calculadora_Teste_Unitario
                 }
                 return retorno;
             }
-            catch (OverflowException )
+            catch (OverflowException)
             {
                 return 0;
             }
