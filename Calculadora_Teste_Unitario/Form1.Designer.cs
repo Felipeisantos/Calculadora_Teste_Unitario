@@ -287,7 +287,6 @@ namespace Calculadora_Teste_Unitario
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Calc";
             this.Text = "Calculadora";
-            this.Load += new System.EventHandler(this.Calc_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

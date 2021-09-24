@@ -135,12 +135,6 @@ namespace Calculadora_Teste_Unitario
                     Ed_Visor.Text = operacoes.Divisao(Valores).ToString();
                     break;
             }
-            
-
-        }
-
-        private void Calc_Load(object sender, EventArgs e)
-        {
         }
     }
 }
