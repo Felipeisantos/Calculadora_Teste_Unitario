@@ -9,29 +9,102 @@ namespace Calculadora_Teste_Unitario
     class Operacoes
     {
 
-        public float Subtracao(List<decimal> values)
+        public decimal Subtracao(List<decimal> values)
         {
+            try
+            {
+                bool first_run = true;
 
+                decimal retorno = 1;
+                foreach (var val in values)
+                {
+                    if (first_run)
+                    {
+                        retorno = val;
+                        first_run = false;
+                    }
+                    else
+                        retorno -= val;
+                }
+                return retorno;
+            }
+            catch (OverflowException)
+            {
+                return 0;
+            }
 
-            return 1;
         }
-        public float Soma(List<decimal> values)
+        public decimal Soma(List<decimal> values)
         {
+            try
+            {
+                bool first_run = true;
 
-
-            return 1;
+                decimal retorno = 1;
+                foreach (var val in values)
+                {
+                    if (first_run)
+                    {
+                        retorno = val;
+                        first_run = false;
+                    }
+                    else
+                        retorno += val;
+                }
+                return retorno;
+            }
+            catch (OverflowException )
+            {
+                return 0;
+            }
         }
-        public float Divisao(List<decimal> values)
+        public decimal Divisao(List<decimal> values)
         {
+            try
+            {
+                bool first_run = true;
 
-
-            return 1;
+                decimal retorno = 1;
+                foreach (var val in values)
+                {
+                    if (first_run)
+                    {
+                        retorno = val;
+                        first_run = false;
+                    }
+                    else
+                        retorno /= val;
+                }
+                return retorno;
+            }
+            catch (OverflowException )
+            {
+                return 0;
+            }
         }
-        public float Multiplicacao(List<decimal> values)
+        public decimal Multiplicacao(List<decimal> values)
         {
+            try
+            {
+                bool first_run = true;
 
-
-            return 1;
+                decimal retorno = 1;
+                foreach (var val in values)
+                {
+                    if (first_run)
+                    {
+                        retorno = val;
+                        first_run = false;
+                    }
+                    else
+                        retorno *= val;
+                }
+                return retorno;
+            }
+            catch (OverflowException )
+            {
+                return 0;
+            }
         }
     }
 }

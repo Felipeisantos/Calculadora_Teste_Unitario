@@ -19,17 +19,23 @@ namespace Calculadora_Teste_Unitario
         }
         CultureInfo cultures = new CultureInfo("pt-BR");
         private List<decimal> Valores = new List<decimal>();
-        private string Value_Top;
+        Auxiliar auxiliar = new Auxiliar();
 
         private void Text_Top(string Op)
         {
-            if (Value_Top == null)
+            auxiliar.SetOperacao = Op;
+            if (String.IsNullOrEmpty(auxiliar.GetValue_Top))
             {
-                Value_Top = Ed_Visor.Text.ToString();
-                Ed_Visor_Top.Text = Value_Top.ToString() + " " + Op;
+                auxiliar.Set_Valores(Ed_Visor.Text.ToString(), Op);
+                Ed_Visor_Top.Text = auxiliar.GetValue_Top + " " + auxiliar.GetOperacao;
+            }
+            else if (!String.IsNullOrEmpty(Ed_Visor.Text.ToString()))
+            {
+                MessageBox.Show("já exite uma operação em andamento e com valores já inseridos", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
             else
-                Ed_Visor_Top.Text = Value_Top.ToString() + " " + Op;
+                Ed_Visor_Top.Text = auxiliar.GetValue_Top + " " + auxiliar.GetOperacao;
 
             Ed_Visor.Text = null;
         }
@@ -50,7 +56,7 @@ namespace Calculadora_Teste_Unitario
         private void Btn_Plus_Click(object sender, EventArgs e)
         {
             Lbl_Operacao.Text += "+";
-            if (Ed_Visor.Text == null)
+            if (!String.IsNullOrEmpty(Ed_Visor.Text))
                 Valores.Add(Converter(Ed_Visor.Text.ToString()));
             Text_Top("+");
         }
@@ -58,7 +64,7 @@ namespace Calculadora_Teste_Unitario
         private void Btn_Div_Click(object sender, EventArgs e)
         {
             Lbl_Operacao.Text += "/";
-            if (Ed_Visor.Text == null)
+            if (!String.IsNullOrEmpty(Ed_Visor.Text))
                 Valores.Add(Converter(Ed_Visor.Text.ToString()));
             Text_Top("/");
         }
@@ -66,7 +72,7 @@ namespace Calculadora_Teste_Unitario
         private void Btn_Menos_Click(object sender, EventArgs e)
         {
             Lbl_Operacao.Text += "-";
-            if(Ed_Visor.Text == null)
+            if (!String.IsNullOrEmpty(Ed_Visor.Text))
                 Valores.Add(Converter(Ed_Visor.Text.ToString()));
             Text_Top("-");
         }
@@ -74,7 +80,7 @@ namespace Calculadora_Teste_Unitario
         private void Btn_Mult_Click(object sender, EventArgs e)
         {
             Lbl_Operacao.Text += "*";
-            if (Ed_Visor.Text == null)
+            if (!String.IsNullOrEmpty(Ed_Visor.Text))
                 Valores.Add(Converter(Ed_Visor.Text.ToString()));
             Text_Top("*");
         }
@@ -101,24 +107,42 @@ namespace Calculadora_Teste_Unitario
         private void Btn_9_Click(object sender, EventArgs e) => Ed_Visor.Text += "9";
         #endregion
 
-        private void Btn_Ponto_Click(object sender, EventArgs e) => Ed_Visor.Text += ".";
+        private void Btn_Ponto_Click(object sender, EventArgs e)
+        {
+            if (!String.IsNullOrEmpty(Ed_Visor.Text.ToString()))
+                Ed_Visor.Text += ",";
+        }
+
         private void Btn_Clean_Click(object sender, EventArgs e)
         {
             Ed_Visor.Text = null;
             Ed_Visor_Top.Text = null;
-            Value_Top = null;
+            auxiliar.Erase_values();
             Valores.Clear();
         }
 
         private void Btn_Equals_Click(object sender, EventArgs e)
         {
-
             Operacoes operacoes = new Operacoes();
-            operacoes.Subtracao(Valores);
-        }
-
-        private void Ed_Visor_TextChanged(object sender, EventArgs e)
-        {
+            if (!String.IsNullOrEmpty(Ed_Visor.Text.ToString()))
+                Valores.Add(Converter(Ed_Visor.Text.ToString()));
+            Ed_Visor_Top.Text = auxiliar.GetValue_Top + " " + auxiliar.GetOperacao + " " + Ed_Visor.Text.ToString();
+            switch (auxiliar.GetOperacao)
+            {
+                case "*":
+                    Ed_Visor.Text = operacoes.Multiplicacao(Valores).ToString();
+                    break;
+                case "+":
+                    Ed_Visor.Text = operacoes.Soma(Valores).ToString();
+                    break;
+                case "-":
+                    Ed_Visor.Text = operacoes.Subtracao(Valores).ToString();
+                    break;
+                case "/":
+                    Ed_Visor.Text = operacoes.Divisao(Valores).ToString();
+                    break;
+            }
+            
 
         }
     }

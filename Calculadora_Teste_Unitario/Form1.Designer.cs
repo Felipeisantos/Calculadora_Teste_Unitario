@@ -29,6 +29,7 @@ namespace Calculadora_Teste_Unitario
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Calc));
             this.Btn_7 = new System.Windows.Forms.Button();
             this.Btn_8 = new System.Windows.Forms.Button();
             this.Btn_9 = new System.Windows.Forms.Button();
@@ -215,6 +216,7 @@ namespace Calculadora_Teste_Unitario
             // 
             // Ed_Visor_Top
             // 
+            this.Ed_Visor_Top.Enabled = false;
             this.Ed_Visor_Top.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Ed_Visor_Top.Location = new System.Drawing.Point(21, 12);
             this.Ed_Visor_Top.Multiline = true;
@@ -247,6 +249,7 @@ namespace Calculadora_Teste_Unitario
             // 
             // Ed_Visor
             // 
+            this.Ed_Visor.Enabled = false;
             this.Ed_Visor.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Ed_Visor.Location = new System.Drawing.Point(21, 36);
             this.Ed_Visor.Multiline = true;
@@ -254,7 +257,6 @@ namespace Calculadora_Teste_Unitario
             this.Ed_Visor.Size = new System.Drawing.Size(210, 32);
             this.Ed_Visor.TabIndex = 19;
             this.Ed_Visor.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.Ed_Visor.TextChanged += new System.EventHandler(this.Ed_Visor_TextChanged);
             // 
             // Calc
             // 
@@ -281,6 +283,8 @@ namespace Calculadora_Teste_Unitario
             this.Controls.Add(this.Btn_9);
             this.Controls.Add(this.Btn_8);
             this.Controls.Add(this.Btn_7);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Calc";
             this.Text = "Calculadora";
             this.ResumeLayout(false);
